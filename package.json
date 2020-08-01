@@ -1,0 +1,32 @@
+{
+  "name": "sequelize-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Agney Menon <agney@outlook.in>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "sequelize": "^6.3.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
