@@ -25,6 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 
+/* Initialize database and associated models */
+const sequelize = require("./config/database")();
+require("./models")(sequelize);
+
 app.use("/", require("./routes"));
 
 app.use(function (err, req, res) {
