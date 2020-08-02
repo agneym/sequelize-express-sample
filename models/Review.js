@@ -1,21 +1,26 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 module.exports = (sequelize) => {
-  class Book extends Model {}
+  class Review extends Model {}
 
-  Book.init(
+  Review.init(
     {
       id: {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
       },
-      name: {
+      title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      description: {
+      body: {
         type: DataTypes.STRING,
+        allowNull: false,
+      },
+      rating: {
+        type: DataTypes.SMALLINT,
+        defaultValue: 0,
       },
     },
     {
@@ -23,5 +28,5 @@ module.exports = (sequelize) => {
     }
   );
 
-  return Book;
+  return Review;
 };
