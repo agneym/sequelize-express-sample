@@ -1,14 +1,18 @@
 const { Sequelize, DataTypes, Model } = require("sequelize");
 
 module.exports = (sequelize) => {
-  class User extends Model {}
+  class Profile extends Model {}
 
-  User.init(
+  Profile.init(
     {
       id: {
         type: DataTypes.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
@@ -16,9 +20,9 @@ module.exports = (sequelize) => {
     }
   );
 
-  User.associate = function (models) {
-    models.user.hasOne(models.profile);
+  Profile.associate = function (models) {
+    models.profile.belongsTo(models.user);
   };
 
-  return User;
+  return Profile;
 };

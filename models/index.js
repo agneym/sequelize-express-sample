@@ -1,4 +1,9 @@
-const modelDefiners = [require("./Book"), require("./User")];
+const modelDefiners = [
+  require("./Book"),
+  require("./Profile"),
+  require("./Review"),
+  require("./User"),
+];
 
 /**
  * Define all models using sequelize instance.
