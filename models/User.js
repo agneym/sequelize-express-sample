@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
 
   User.associate = function (models) {
     models.user.hasOne(models.profile);
+    models.user.hasMany(models.review);
+    models.user.belongsToMany(models.book, {
+      through: "ReadBooks",
+    });
   };
 
   return User;

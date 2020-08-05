@@ -28,5 +28,9 @@ module.exports = (sequelize) => {
     }
   );
 
+  Review.associate = function (models) {
+    models.review.belongsTo(models.user);
+  };
+
   return Review;
 };
