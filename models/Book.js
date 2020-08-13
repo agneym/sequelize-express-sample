@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
   );
 
   Book.associate = function (models) {
-    models.book.belongsToMany(models.user, {
+    this.belongsToMany(models.User, {
       through: "ReadBooks",
     });
   };

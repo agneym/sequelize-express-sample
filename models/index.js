@@ -10,23 +10,21 @@ const modelDefiners = [
  * @param {Object} sequelize Database instance
  */
 async function defineModels(sequelize) {
-  const models = modelDefiners.reduce((models, modelDefiner) => {
-    const model = modelDefiner(sequelize);
-    return {
-      ...models,
-      model,
-    };
-  }, {});
+  modelDefiners.forEach((modelDefiner) => {
+    modelDefiner(sequelize);
+  });
 
   /* Associate with related models */
+  const { models } = sequelize;
   Object.values(models).forEach((model) => {
     if (typeof model.associate === "function") {
-      model.associate(models);
+      model.associate.call(model, models);
     }
   });
 
-  /* Create models in database */
-  await sequelize.sync();
+  await sequelize.sync({
+    force: true,
+  });
 }
 
 module.exports = defineModels;

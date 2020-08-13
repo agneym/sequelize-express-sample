@@ -17,9 +17,9 @@ module.exports = (sequelize) => {
   );
 
   User.associate = function (models) {
-    models.user.hasOne(models.profile);
-    models.user.hasMany(models.review);
-    models.user.belongsToMany(models.book, {
+    this.hasOne(models.Profile);
+    this.hasMany(models.Review);
+    this.belongsToMany(models.Book, {
       through: "ReadBooks",
     });
   };

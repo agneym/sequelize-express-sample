@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
   );
 
   Review.associate = function (models) {
-    models.review.belongsTo(models.user);
+    this.belongsTo(models.User);
   };
 
   return Review;
